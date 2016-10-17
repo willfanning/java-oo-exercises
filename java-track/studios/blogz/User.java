@@ -34,12 +34,11 @@ public class User {
 		return Pattern.matches("[a-zA-Z][a-zA-Z0-9_-]{4,11}", username);
 	}
 
-	
 	public static List<User> getUsers() {
 		return users;
 	}
 	
-	private static String hashPassword(String pw) {
+	public static String hashPassword(String pw) {
 		// temporary method, will implement hashing behavior later
 		return pw;
 	}
@@ -53,6 +52,12 @@ public class User {
 		return username;
 	}
 	
+	public static void main(String[] args) {
+		User u = new User("username", "password");
+		System.out.println(u.password);
+		System.out.println(u.hashedPassword);
+		System.out.println(u.isValidPassword("password"));
+	}
 	
 	
 }
