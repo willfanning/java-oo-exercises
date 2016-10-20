@@ -2,7 +2,7 @@ package blogz;
 
 import java.util.Date;
 
-public class Post {
+public class Post extends Entity {
 	
 	private String author;
 	private String title;
@@ -11,6 +11,7 @@ public class Post {
 	private Date modified;
 	
 	public Post(String auth, String title, String body) {
+		super();
 		this.author = auth;
 		this.title = title;
 		this.body = body;

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class User {
+public class User extends Entity {
 	
 	private String username;
 	private String password;
@@ -14,6 +14,7 @@ public class User {
 	private static List<User> users = new ArrayList<User>();
 	
 	public User(String username, String pw) {
+		super();
 		if (!User.isValidUsername(username)) {
 			throw new IllegalArgumentException();
 		} 
@@ -57,6 +58,8 @@ public class User {
 		System.out.println(u.password);
 		System.out.println(u.hashedPassword);
 		System.out.println(u.isValidPassword("password"));
+		System.out.println(u.getUid());
+		
 	}
 	
 	
