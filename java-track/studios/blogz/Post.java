@@ -1,6 +1,7 @@
 package blogz;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Post extends Entity {
 	
@@ -45,6 +46,15 @@ public class Post extends Entity {
 
 	public Date getCreated() {
 		return created;
+	}
+	
+	@Override
+	public final boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null) return false;
+		if (!(o instanceof Post)) return false;
+		Post p = (Post) o;
+		return Objects.equals(author, p.author) && Objects.equals(created, p.created) && Objects.equals(body, p.body);
 	}
 
 }

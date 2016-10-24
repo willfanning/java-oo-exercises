@@ -2,7 +2,7 @@ package blogz;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class User extends Entity {
@@ -15,9 +15,8 @@ public class User extends Entity {
 	
 	public User(String username, String pw) {
 		super();
-		if (!User.isValidUsername(username)) {
-			throw new IllegalArgumentException();
-		} 
+		if (!User.isValidUsername(username)) throw new IllegalArgumentException();
+		
 		this.username = username;
 		this.password = pw;
 		this.hashedPassword = User.hashPassword(pw);
@@ -52,6 +51,18 @@ public class User extends Entity {
 	public String getUsername() {
 		return username;
 	}
+	
+	@Override
+	public final boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null) return false;
+		if (!(o instanceof User)) return false;
+		User u = (User) o;
+		return Objects.equals(username, u.username) && Objects.equals(hashedPassword, u.hashedPassword);
+	}
+	
+	
+	
 	
 	public static void main(String[] args) {
 		User u = new User("username", "password");
